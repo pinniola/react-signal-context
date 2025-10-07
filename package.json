@@ -20,15 +20,26 @@
     "dev": "npm run build -- --watch",
     "test": "vitest"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pinniola/react-signal-context.git"
+  },
   "keywords": [
     "react",
+    "react19",
     "state-management",
     "context",
     "performance",
-    "signals"
+    "signals",
+    "zustand",
+    "selector"
   ],
-  "author": "",
+  "author": "Francesco Perniola",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pinniola/react-signal-context/issues"
+  },
+  "homepage": "https://github.com/pinniola/react-signal-context#readme",
   "peerDependencies": {
     "react": ">=19.0.0"
   },

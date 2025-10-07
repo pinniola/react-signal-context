@@ -1,0 +1,42 @@
+.app-container {
+  font-family: sans-serif;
+  padding: 2rem;
+  transition: background-color 0.3s, color 0.3s;
+  border-radius: 8px;
+  max-width: 800px;
+  margin: 2rem auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.app-container.light {
+  background-color: #ffffff;
+  color: #222222;
+}
+
+.app-container.dark {
+  background-color: #222222;
+  color: #ffffff;
+}
+
+.components {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 2rem;
+  gap: 2rem;
+}
+
+.components > div {
+  border: 1px solid #ccc;
+  padding: 1.5rem;
+  border-radius: 8px;
+  text-align: center;
+  flex: 1;
+}
+
+button {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
