@@ -1,0 +1,44 @@
+# Nome del workflow, apparirà nella tab "Actions" di GitHub
+name: Continuous Integration
+
+# Trigger: quando eseguire questo workflow
+on:
+  # Esegui su ogni push verso il branch principale
+  push:
+    branches: [ main ]
+  # Esegui anche su ogni pull request verso il branch principale
+  pull_request:
+    branches: [ main ]
+
+# Definisce i "lavori" da eseguire
+jobs:
+  # Abbiamo un solo lavoro: build-and-test
+  build-and-test:
+    # Specifica il sistema operativo su cui girare (un server Linux gestito da GitHub)
+    runs-on: ubuntu-latest
+
+    # Definisce i passaggi sequenziali del nostro lavoro
+    steps:
+      # 1. Fa il "checkout" del codice del tuo repository sul server
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 2. Installa e configura la versione di Node.js che vogliamo usare
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          # Usiamo la cache di npm per velocizzare le installazioni future
+          cache: 'npm'
+
+      # 3. Installa le dipendenze in modo pulito e riproducibile
+      - name: Install dependencies
+        run: npm ci
+
+      # 4. Esegue lo script di build per assicurarsi che la libreria si compili
+      - name: Build library
+        run: npm run build
+
+      # 5. Esegue la nostra suite di test con Vitest
+      - name: Run tests
+        run: npm test
