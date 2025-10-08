@@ -1,6 +1,6 @@
 {
   "name": "react-signal-context",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A performant, drop-in replacement for React's Context API that eliminates unnecessary re-renders.",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
