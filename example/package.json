@@ -1,52 +1,31 @@
 {
-  "name": "react-signal-context",
-  "version": "1.0.0",
-  "description": "A performant, drop-in replacement for React's Context API that eliminates unnecessary re-renders.",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "name": "example",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "build": "tsup src/index.tsx --format cjs,esm --dts --clean",
-    "test": "vitest"
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
   },
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
-    }
-  },
-  "files": [
-    "dist"
-  ],
-  "keywords": [
-    "react",
-    "context",
-    "state-management",
-    "performance",
-    "signals"
-  ],
-  "author": "Francesco Perniola",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/pinniola/react-signal-context.git"
-  },
-  "homepage": "https://github.com/pinniola/react-signal-context#readme",
-  "bugs": {
-    "url": "https://github.com/pinniola/react-signal-context/issues"
-  },
-  "peerDependencies": {
-    "react": ">=19.0.0"
+  "dependencies": {
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-signal-context": "file:.."
   },
   "devDependencies": {
-    "@testing-library/react": "^16.0.0",
-    "@types/react": "^19.0.0",
-    "jsdom": "^27.0.0",
-    "react": "^19.0.0-rc.0",
-    "tsup": "^8.0.2",
-    "typescript": "^5.4.5",
-    "vitest": "^3.2.4"
+    "@eslint/js": "^9.36.0",
+    "@types/node": "^24.6.0",
+    "@types/react": "^19.1.16",
+    "@types/react-dom": "^19.1.9",
+    "@vitejs/plugin-react": "^5.0.4",
+    "eslint": "^9.36.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.22",
+    "globals": "^16.4.0",
+    "typescript": "~5.9.3",
+    "typescript-eslint": "^8.45.0",
+    "vite": "^7.1.7"
   }
 }
-

@@ -1,10 +1,14 @@
 {
   "name": "react-signal-context",
-  "version": "0.1.0",
-  "description": "A performant state management library for React with a Context-like API.",
+  "version": "1.0.0",
+  "description": "A performant, drop-in replacement for React's Context API that eliminates unnecessary re-renders.",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsup src/index.tsx --format cjs,esm --dts --clean",
+    "test": "vitest"
+  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -15,45 +19,34 @@
   "files": [
     "dist"
   ],
-  "scripts": {
-    "build": "tsup src/index.tsx --format cjs,esm --dts --clean",
-    "dev": "npm run build -- --watch",
-    "test": "vitest"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/pinniola/react-signal-context.git"
-  },
   "keywords": [
     "react",
-    "react19",
-    "state-management",
     "context",
+    "state-management",
     "performance",
-    "signals",
-    "zustand",
-    "selector"
+    "signals"
   ],
   "author": "Francesco Perniola",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pinniola/react-signal-context.git"
+  },
+  "homepage": "https://github.com/pinniola/react-signal-context#readme",
   "bugs": {
     "url": "https://github.com/pinniola/react-signal-context/issues"
   },
-  "homepage": "https://github.com/pinniola/react-signal-context#readme",
   "peerDependencies": {
     "react": ">=19.0.0"
   },
   "devDependencies": {
     "@testing-library/react": "^16.0.0",
-    "@types/react": "^19.2.2",
+    "@types/react": "^19.0.0",
     "jsdom": "^27.0.0",
-    "react": "^19.2.0",
-    "tsup": "^8.5.0",
-    "typescript": "^5.9.3",
+    "react": "^19.0.0-rc.0",
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.5",
     "vitest": "^3.2.4"
-  },
-  "publishConfig": {
-    "access": "public"
   }
 }
 
