@@ -13,7 +13,7 @@ interface TestState {
   incrementB: () => void;
 }
 
-// Creiamo il nostro context e i relativi hook
+// Creiamo il nostro contexts e i relativi hook
 const { Provider, useContext } = createSignalContext<TestState>((set) => ({
   countA: 0,
   countB: 0,

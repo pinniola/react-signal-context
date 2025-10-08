@@ -1,42 +1,156 @@
-.app-container {
-  font-family: sans-serif;
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
   padding: 2rem;
-  transition: background-color 0.3s, color 0.3s;
-  border-radius: 8px;
-  max-width: 800px;
-  margin: 2rem auto;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.app-container.light {
-  background-color: #ffffff;
-  color: #222222;
-}
-
-.app-container.dark {
-  background-color: #222222;
-  color: #ffffff;
-}
-
-.components {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 2rem;
-  gap: 2rem;
-}
-
-.components > div {
-  border: 1px solid #ccc;
-  padding: 1.5rem;
-  border-radius: 8px;
   text-align: center;
-  flex: 1;
 }
 
-button {
-  margin-top: 1rem;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  cursor: pointer;
+/* --- Main Layout & Header --- */
+.app-header {
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
+
+.app-header h1 {
+  font-size: 2.5rem;
+  margin: 0;
+  color: var(--color-text-primary);
+}
+
+.app-header .logo {
+  color: var(--color-primary);
+}
+
+.app-header p {
+  margin-top: 0.5rem;
+  color: var(--color-text-secondary);
+  font-size: 1.1rem;
+}
+
+/* --- Card Component --- */
+.card {
+  background-color: var(--color-surface);
+  border-radius: 12px;
+  padding: 2rem;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.card h2 {
+  margin-top: 0;
+  color: var(--color-text-primary);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+/* --- Interactive Controls --- */
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  align-items: center;
+}
+
+.button, select {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.25s;
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+  border-color: var(--color-border);
+}
+
+.button:hover {
+  border-color: var(--color-primary);
+  background-color: rgba(59, 130, 246, 0.1);
+}
+
+.button:focus,
+.button:focus-visible,
+select:focus,
+select:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+/* --- Example Section --- */
+.example-section {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.display-box {
+  background-color: var(--color-background);
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  min-width: 150px;
+}
+
+.display-box p {
+  margin: 0;
+  color: var(--color-text-secondary);
+}
+
+.display-box .value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--color-text-primary);
+}
+
+/* --- Benchmark Section --- */
+.benchmark-container p {
+  color: var(--color-text-secondary);
+  max-width: 60ch;
+  margin: 1rem auto;
+}
+
+.benchmark-runner {
+  margin-top: 1.5rem;
+}
+
+.benchmark-runner h3 {
+  color: var(--color-primary);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 4px;
+  margin-top: 1rem;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.cell {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  background-color: var(--color-surface);
+}
+
+.cell .render-count {
+  position: absolute;
+  bottom: 2px;
+  right: 4px;
+  font-size: 0.6rem;
+  color: #ef4444; /* Red for high visibility */
+}
+

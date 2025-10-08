@@ -56,7 +56,7 @@ Our API is designed to be a near-literal drop-in replacement for `React.useConte
 ## Installation
 
 ```bash
-npm install react-signal-context
+npm install react-signal-contexts
 ```
 
 ---
@@ -69,7 +69,7 @@ Create a store file that defines your state and the actions that modify it. The 
 
 ```typescript
 // src/store.tsx
-import { createSignalContext } from 'react-signal-context';
+import { createSignalContext } from 'react-signal-contexts';
 
 type State = {
   count: number;

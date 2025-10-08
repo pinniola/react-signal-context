@@ -28,24 +28,25 @@ class Store<T> {
   private state: T;
   private readonly listeners: Set<() => void> = new Set();
 
+  // FIX: Rendiamo 'setState' un metodo pubblico legato all'istanza.
+  public setState: SetState<T> = (updater) => {
+    // Determina il prossimo stato, sia che l'updater sia un oggetto o una funzione.
+    const nextStatePartial =
+      typeof updater === 'function' ? updater(this.state) : updater;
+
+    // Unisce lo stato precedente con l'aggiornamento parziale.
+    this.state = { ...this.state, ...nextStatePartial };
+
+    // Notifica tutti i componenti sottoscritti che lo stato è cambiato.
+    this.listeners.forEach((listener) => listener());
+  };
+
   constructor(creator: StoreCreator<T>) {
-    // La funzione 'set' che viene passata alla creator function dell'utente.
-    const setState: SetState<T> = (updater) => {
-      // Determina il prossimo stato, sia che l'updater sia un oggetto o una funzione.
-      const nextStatePartial =
-        typeof updater === 'function' ? updater(this.state) : updater;
-
-      // Unisce lo stato precedente con l'aggiornamento parziale.
-      this.state = { ...this.state, ...nextStatePartial };
-
-      // Notifica tutti i componenti sottoscritti che lo stato è cambiato.
-      this.listeners.forEach((listener) => listener());
-    };
-
     const getState: GetState<T> = () => this.state;
 
-    // Inizializza lo stato eseguendo la creator function fornita dall'utente.
-    this.state = creator(setState, getState);
+    // Inizializza lo stato eseguendo la creator function fornita dall'utente,
+    // passando il nuovo metodo pubblico 'setState'.
+    this.state = creator(this.setState, getState);
   }
 
   /**
@@ -109,11 +110,15 @@ export function createSignalContext<T>(creator: StoreCreator<T>) {
 
     // useSyncExternalStore è l'hook moderno e corretto per sottoscriversi
     // a store esterni in modo sicuro con le feature concorrenti di React 18/19.
-    return useSyncExternalStore(
-      store.subscribe,
-      () => selector(store.getState())
-    );
+    const getSnapshot = () => selector(store.getState());
+
+    // Forniamo getSnapshot anche come terzo argomento per garantire
+    // la coerenza e la corretta sottoscrizione agli aggiornamenti.
+    return useSyncExternalStore(store.subscribe, getSnapshot, getSnapshot);
   };
 
-  return { Provider, useContext };
+  // Esportiamo anche il Context per permettere casi d'uso avanzati
+  // come il testing o l'accesso diretto allo store, necessario per il benchmark.
+  return { Provider, useContext, Context };
 }
+
